@@ -36,7 +36,11 @@ export const ListWithHooks = (props) => {
         };
         tryIncrementNumberOfChunks();
         containerElement.addEventListener('scroll', tryIncrementNumberOfChunks);
-        return () => containerElement.removeEventListener('scroll', tryIncrementNumberOfChunks);
+        window.addEventListener('resize', tryIncrementNumberOfChunks);
+        return () => {
+            containerElement.removeEventListener('scroll', tryIncrementNumberOfChunks);
+            window.removeEventListener('resize', tryIncrementNumberOfChunks);
+        };
     }, [items.length, numberOfChunks]);
 
     const itemsChunkSize = numberOfChunks * CHUNK_SIZE;

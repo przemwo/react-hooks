@@ -15,6 +15,7 @@ export class ListWithClass extends React.Component {
     componentDidMount() {
         this.fetchItems();
         this.containerRef.current.addEventListener('scroll', this.tryIncrementNumberOfChunks);
+        window.addEventListener('resize', this.tryIncrementNumberOfChunks);
     }
 
     componentDidUpdate(prevProp, prevState) {
@@ -27,6 +28,7 @@ export class ListWithClass extends React.Component {
 
     componentWillUnmount() {
         this.containerRef.current.removeEventListener('scroll', this.tryIncrementNumberOfChunks);
+        window.removeEventListener('resize', this.tryIncrementNumberOfChunks);
     }
 
     tryIncrementNumberOfChunks = () => {

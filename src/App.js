@@ -1,7 +1,7 @@
 import React from 'react';
 
-// import { ListWithHooks as List } from './ListWithHooks';
-import { ListWithClass as List } from './ListWithClass';
+import { ListWithHooks as List } from './ListWithHooks';
+// import { ListWithClass as List } from './ListWithClass';
 
 
 export default class App extends React.Component {

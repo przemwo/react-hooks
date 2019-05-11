@@ -7,7 +7,6 @@ export class ListWithClass extends React.Component {
     state = {
         items: [],
         numberOfChunks: 1,
-        isLoading: true,
         renderedListID: null,
     };
     
@@ -39,19 +38,15 @@ export class ListWithClass extends React.Component {
     }
 
     fetchItems = () => {
-        if(this.state.renderedListID === this.props.listID) {
-            this.setState({ isLoading: false });    
-        } else {
-            this.setState({ isLoading: true });
-            const currentListID = this.props.listID;
-            fetch(`https://jsonplaceholder.typicode.com/todos?userId=${this.props.listID}`)
+        const currentListID = this.props.listID;
+        if(this.state.renderedListID !== currentListID) {
+            fetch(`https://jsonplaceholder.typicode.com/todos?userId=${currentListID}`)
                 .then(response => response.json())
                 .then(items => {
                     if (currentListID === this.props.listID) {
                         this.setState({
                             numberOfChunks: 1,
                             items,
-                            isLoading: false,
                             renderedListID: this.props.listID,
                         });
                     }
@@ -62,6 +57,7 @@ export class ListWithClass extends React.Component {
     render() {
         const itemsChunkSize = this.state.numberOfChunks * CHUNK_SIZE;
         const itemsChunk = this.state.items.slice(0, itemsChunkSize);
+        const isLoading = this.state.renderedListID !== this.props.listID;
         return(
             <div className="content-container">
                 <div ref={this.containerRef} className="items-container">
@@ -72,7 +68,7 @@ export class ListWithClass extends React.Component {
                         </div>
                     ))}
                 </div>
-                {this.state.isLoading && <div className="spinner"><h2>Loading...</h2></div>}
+                {isLoading && <div className="spinner"><h2>Loading...</h2></div>}
             </div>
         );
     }

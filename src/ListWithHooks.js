@@ -4,7 +4,6 @@ import { CHUNK_SIZE, NEXT_CHUNK_THRESHOLD_PX } from './constants';
 
 
 export const ListWithHooks = (props) => {
-    const [isLoading, setIsLoading] = useState(true);
     const [items, setItems] = useState([]);
     const [numberOfChunks, setNumberOfChunks] = useState(1);
 
@@ -13,17 +12,13 @@ export const ListWithHooks = (props) => {
 
     useEffect(() => {
         let isCanceled = false;
-        if(renderedListID.current === props.listID) {
-            setIsLoading(false);
-        } else {
-            setIsLoading(true);
+        if(renderedListID.current !== props.listID) {
             fetch(`https://jsonplaceholder.typicode.com/todos?userId=${props.listID}`)
                 .then(response => response.json())
                 .then(data => {
                     if(!isCanceled) {
                         setNumberOfChunks(1);
                         setItems(data);
-                        setIsLoading(false);
                         renderedListID.current = props.listID;
                     }
                 });
@@ -46,6 +41,7 @@ export const ListWithHooks = (props) => {
 
     const itemsChunkSize = numberOfChunks * CHUNK_SIZE;
     const itemsChunk = items.slice(0, itemsChunkSize);
+    const isLoading = renderedListID.current !== props.listID;
     return (
         <div className="content-container">
             <div ref={containerRef} className="items-container">

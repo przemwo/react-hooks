@@ -6,15 +6,15 @@ import { ListWithHooks as List } from './ListWithHooks';
 
 export default class App extends React.Component {
     state = {
-        listID: 1,
+        listID: "fmal",
     };
     render() {
         return(
             <div className="container">
                 <nav>
-                    <button onClick={() => this.setState({ listID: 1})}>przemwo</button>
-                    <button onClick={() => this.setState({ listID: 2})}>iamshaunjp</button>
-                    <button onClick={() => this.setState({ listID: 3})}>iamshaunjp</button>
+                    <button onClick={() => this.setState({ listID: "fmal" })}>Filip Malinowski</button>
+                    <button onClick={() => this.setState({ listID: "iamshaunjp" })}>Shaun</button>
+                    <button onClick={() => this.setState({ listID: "gaearon" })}>Dan Abramov</button>
                 </nav>
                 <List listID={this.state.listID} />
             </div>

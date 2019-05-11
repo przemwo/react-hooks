@@ -39,6 +39,13 @@ nav {
 }
 
 .content-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.items-container {
   background-color: #00ff00;
   flex-grow: 1;
   overflow-y: scroll;
@@ -48,4 +55,18 @@ nav {
   margin: 1rem 0;
   padding: 2rem;
   background-color: yellow;
+}
+
+.spinner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
 }

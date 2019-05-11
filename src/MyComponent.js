@@ -24,18 +24,18 @@ export default (props) => {
             }
         });
         return () => shouldUpdate = false;
-    }, [props.user]);
+    }, [props.user, dataID]);
 
     useEffect(() => {
+        const containerElement = containerRef.current;
         const incrementNumberOfChunks = () => {
-            const containerElement = containerRef.current;
             if ((numberOfChunks * CHUNK_SIZE < items.length) && (containerElement.offsetHeight + containerElement.scrollTop >= containerElement.scrollHeight - 100)) {
                 setNumberOfChunks((numberOfChunks) => numberOfChunks + 1);
             }
         };
-        containerRef.current.addEventListener('scroll', incrementNumberOfChunks);
+        containerElement.addEventListener('scroll', incrementNumberOfChunks);
         incrementNumberOfChunks();
-        return () => containerRef.current.removeEventListener('scroll', incrementNumberOfChunks);
+        return () => containerElement.removeEventListener('scroll', incrementNumberOfChunks);
     });
 
     const itemsChunk = items.slice(0, CHUNK_SIZE * numberOfChunks);

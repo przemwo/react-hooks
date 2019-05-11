@@ -42,7 +42,7 @@ export class ListWithClass extends React.Component {
     fetchItems = () => {
         const currentListID = this.props.listID;
         if(this.state.renderedListID !== currentListID) {
-            fetch(`https://jsonplaceholder.typicode.com/todos?userId=${currentListID}`)
+            fetch(`/api/users/${currentListID}`)
                 .then(response => response.json())
                 .then(items => {
                     if (currentListID === this.props.listID) {

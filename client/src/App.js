@@ -14,6 +14,7 @@ export default class App extends React.Component {
                 <nav>
                     <button onClick={() => this.setState({ listID: 1})}>przemwo</button>
                     <button onClick={() => this.setState({ listID: 2})}>iamshaunjp</button>
+                    <button onClick={() => this.setState({ listID: 3})}>iamshaunjp</button>
                 </nav>
                 <List listID={this.state.listID} />
             </div>

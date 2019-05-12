@@ -51,8 +51,11 @@ export const ListWithHooks = (props) => {
             <div ref={containerRef} className="items-container">
                 {itemsChunk.map(item => (
                     <div key={item.id} className="item">
-                        <h1>{item.id}</h1>
-                        <h2>{item.title}</h2>
+                        <div className="item-content">
+                            <h2>{item.name}</h2>
+                            <p>{item.description}</p>
+                            <a href={item.url}>{item.url}</a>
+                        </div>
                     </div>
                 ))}
             </div>

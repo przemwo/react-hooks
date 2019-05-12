@@ -1,20 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 * {
   margin: 0;
   padding: 0;
+  --bg-color: #282B2D;
+  --item-bg-color: #262626;
+  --text-color: #cccccc;
+  --light-color: #f4f4f4;
+  --link-color: #faaf43;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--text-color);
 }
 
 #root {
-  background-color: blue;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -22,16 +25,13 @@ body {
   right: 0;
   display: flex;
   overflow: hidden;
+  background-color: var(--bg-color);
 }
 
 .container {
-  background-color: #ffcc00;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
 }
 
 nav {
@@ -39,6 +39,7 @@ nav {
 }
 
 .content-container {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -46,15 +47,45 @@ nav {
 }
 
 .items-container {
-  background-color: #00ff00;
   flex-grow: 1;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
 }
 
 .item {
-  margin: 1rem 0;
+  margin: 1rem 1.5rem;
+}
+
+.item-content {
+  max-width: 600px;
+  margin: 0 auto;
   padding: 2rem;
-  background-color: yellow;
+  background-color: var(--item-bg-color);
+
+}
+
+.item-content:hover {
+  background-color: #191919;
+}
+
+.item h2 {
+  color: var(--light-color);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.item p {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+
+.item a {
+  color: var(--link-color);
+  display: inline-block;
+  margin-top: 0.5rem;
+  word-break: break-all;
 }
 
 .spinner {
@@ -64,9 +95,10 @@ nav {
   left: 0;
   right: 0;
   display: flex;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  color: #ffffff;
+  font-size: 1.5rem;
+  color: var(--text-color);
 }

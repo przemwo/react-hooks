@@ -5,7 +5,9 @@ const app = express();
 
 app.get('/api/users/:id', (req, res) => {
     const id = req.params.id;
-    res.json(data[id].repos);
+    setTimeout(() => {
+        res.json(data[id].repos);
+    }, 500);
 });
 
 const PORT = process.env.PORT || 5000;

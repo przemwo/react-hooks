@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { MyComponentHooks as MyComponent } from './solutions/MyComponentHooks';
-// import { MyComponentClass as MyComponent } from './MyComponentClass';
+// import { MyComponentHooks as MyComponent } from './MyComponentHooks';
+import { MyComponentClass as MyComponent } from './MyComponentClass';
 
 
 export const App = () => {

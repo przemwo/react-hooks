@@ -68,7 +68,7 @@ export class ListWithClass extends React.Component {
                             <div className="item-content">
                                 <h2>{item.name}</h2>
                                 <p>{item.description}</p>
-                                <a href={item.url}>{item.url}</a>
+                                <a href={item.html_url}>{item.html_url}</a>
                             </div>
                         </div>
                     ))}

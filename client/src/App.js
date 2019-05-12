@@ -4,10 +4,15 @@ import React, { useState } from 'react';
 import { MyComponentClass as MyComponent } from './MyComponentClass';
 
 
-export const App = () => {
-    return(
-        <div className="card-container">
-            <MyComponent />
-        </div>
-    );
+export class App extends React.Component {
+    state = {
+        showMyComponent: true,
+    };
+    render() {
+        return(
+            <div className="card-container">
+                {this.state.showMyComponent && <MyComponent />}
+            </div>
+        );
+    }
 };

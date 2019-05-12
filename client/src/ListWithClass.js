@@ -34,7 +34,7 @@ export class ListWithClass extends React.Component {
     tryIncrementNumberOfChunks = () => {
         const containerElement = this.containerRef.current;
         const itemsChunkSize = this.state.numberOfChunks * CHUNK_SIZE;
-        if ((itemsChunkSize < this.state.items.length) && (containerElement.offsetHeight + containerElement.scrollTop >= containerElement.scrollHeight - NEXT_CHUNK_THRESHOLD_PX)) {
+        if ((itemsChunkSize < this.state.items.length) && (containerElement.clientHeight + containerElement.scrollTop >= containerElement.scrollHeight - NEXT_CHUNK_THRESHOLD_PX)) {
             this.setState(state => ({ numberOfChunks: state.numberOfChunks + 1 }));
         }
     }

@@ -24,7 +24,7 @@ export const ListWithHooks = (props) => {
                 });
         }
         return () => isCanceled = true;
-    }, [props.listID]);
+    }, [props.listID, renderedListID]);
 
     useEffect(() => {
         const containerElement = containerRef.current;

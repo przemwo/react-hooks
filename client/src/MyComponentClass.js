@@ -5,9 +5,12 @@ export class MyComponentClass extends React.Component {
     state = {
         userName: "fmal",
         windowWidth: 0,
+        timer: 0,
     }
 
     inputRef = React.createRef();
+
+    intervalID = null;
 
     handleChangeUserName = (e) => {
         this.setState({ userName: e.target.value });
@@ -17,10 +20,26 @@ export class MyComponentClass extends React.Component {
         this.inputRef.current.select();
         window.addEventListener('resize', this.handleWindowResized);
         this.handleWindowResized();
+        this.setTimerInterval();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.userName !== this.state.userName) {
+            this.setState({ timer: 0 });
+            clearInterval(this.intervalID); // clear old interval...
+            this.setTimerInterval(); // ...and start new interval
+        }
+    }
+
+    setTimerInterval = () => {
+        this.intervalID = setInterval(() => {
+            this.setState(state => ({ timer: state.timer + 3 }));
+        }, 3000);
     }
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.handleWindowResized);
+        clearInterval(this.intervalID);
     }
 
     handleWindowResized = () => {
@@ -41,6 +60,7 @@ export class MyComponentClass extends React.Component {
                     value={this.state.userName}
                     onChange={this.handleChangeUserName}
                 />
+                <h5>userName updated {this.state.timer}s ago</h5>
             </div>
         );
     }

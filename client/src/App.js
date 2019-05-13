@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // import { MyComponentHooks as MyComponent } from './MyComponentHooks';
 import { MyComponentClass as MyComponent } from './MyComponentClass';

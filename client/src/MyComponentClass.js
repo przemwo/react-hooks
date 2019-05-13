@@ -33,8 +33,9 @@ export class MyComponentClass extends React.Component {
 
     setTimerInterval = () => {
         this.intervalID = setInterval(() => {
-            this.setState(state => ({ timer: state.timer + 3 }));
-        }, 3000);
+            console.log('tick');
+            this.setState(state => ({ timer: state.timer + 1 }));
+        }, 1000);
     }
 
     componentWillUnmount() {

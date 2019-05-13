@@ -3,18 +3,16 @@ import React, { useState, useRef, useEffect } from 'react';
 
 export const MyComponentHooks = () => {
     const [userName, setUserName] = useState("fmal");
-    const [windowWidth, setWindowWidth] = useState(0);
-    const [timer, setTimer] = useState(0);
-    const inputRef = useRef();
-
     const handleChangeUserName = (e) => {
         setUserName(e.target.value);
     };
-
+    
+    const inputRef = useRef();
     useEffect(() => {
         inputRef.current.select();
     }, []);
-
+    
+    const [windowWidth, setWindowWidth] = useState(0);
     useEffect(() => {
         const handleWindowResized = () => {
             console.log('resizing'); //shows importance of removing event listener on unmounting
@@ -24,11 +22,13 @@ export const MyComponentHooks = () => {
         window.addEventListener('resize', handleWindowResized);
         return () => window.removeEventListener('resize', handleWindowResized);
     },[]);
-
+    
+    const [timer, setTimer] = useState(0);
     useEffect(() => {
         const id = setInterval(() => {
-            setTimer(timer => timer + 3);
-        }, 3000);
+            console.log('tick');
+            setTimer(timer => timer + 1);
+        }, 1000);
         return () => {
             setTimer(0);
             clearInterval(id);
